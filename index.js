@@ -25,7 +25,7 @@ restService.use(bodyParser.json());
     displayText: speech,
     source: "webhook-echo-sample"
   });
-});*/
+});
 
 restService.post("/audio", function(req, res) {
   var speech = "";
@@ -197,4 +197,4 @@ restService.post("/slack-test", function(req, res) {
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
-});
+});*/
