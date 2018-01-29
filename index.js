@@ -21,7 +21,7 @@ restService.post("", function(req, res) {
   }
   else if(req.body.result && req.body.result.parameters && req.body.result.parameters.prueba)
   {
-    speech = req.body.result.parameters.prueba
+    speech = "listo"
   }
   return res.json({
     speech: speech,
