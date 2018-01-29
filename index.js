@@ -20,6 +20,12 @@ restService.post("", function(req, res) {
     req.body.result.parameters.echoText
       ? "req.body.result.parameters.echoText"
       : "Seems like some problem. Speak again.";
+   speech =
+    req.body.result &&
+    req.body.result.parameters &&
+    req.body.result.parameters.prueba
+      ? "listo"
+      : "aja";
   return res.json({
     speech: speech,
     displayText: speech,
