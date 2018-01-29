@@ -14,18 +14,15 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("", function(req, res) {
-  var speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.echoText
-      ? "req.body.result.parameters.echoText"
-      : "Seems like some problem. Speak again.";
-   speech =
-    req.body.result &&
-    req.body.result.parameters &&
-    req.body.result.parameters.prueba
-      ? "listo"
-      : "aja";
+  var speech = "";
+  if(req.body.result && req.body.result.parameters && req.body.result.parameters.echoText)
+  {
+    speech = req.body.result.parameters.echoText
+  }
+  else if(req.body.result && req.body.result.parameters && req.body.result.parameters.prueba)
+  {
+    speech = "listo"
+  }
   return res.json({
     speech: speech,
     displayText: speech,
