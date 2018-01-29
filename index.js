@@ -13,7 +13,7 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-/*restService.post("/echo", function(req, res) {
+restService.post("", function(req, res) {
   var speech =
     req.body.result &&
     req.body.result.parameters &&
@@ -25,18 +25,6 @@ restService.use(bodyParser.json());
     displayText: speech,
     source: "webhook-echo-sample"
   });
-});
-*/
-restService.post(msg, function(req, res) {
-  
-if (msg.text.toString().toLowerCase().indexOf("men") === 0) {
-speech="hola desde el codigo";
-return res.json({
-speech: speech,
-displayText: speech,
-source: "webhook-echo-sample"
-});
-} 
 });
 
 restService.post("/audio", function(req, res) {
