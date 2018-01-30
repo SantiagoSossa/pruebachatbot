@@ -31,6 +31,26 @@ restService.post("", function(req, res) {
   });
 });
 
+var oracledb = require('oracledb');
+oracledb.getConnection(
+  {
+    user          : "EPS",
+    password      : "thxQ",
+    connectString : "XE"
+  },
+  function(err, connection)
+  {
+    if (err) { console.error(err); return; }
+    connection.execute(
+      "SELECT *"
+    + "FROM sf_eps_user ",
+      function(err, result)
+      {
+        if (err) { console.error(err); return; }
+        console.log(result.rows);
+      });
+  });
+
 restService.post("/audio", function(req, res) {
   var speech = "";
   switch (req.body.result.parameters.AudioSample.toLowerCase()) {
