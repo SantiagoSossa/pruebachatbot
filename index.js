@@ -22,7 +22,7 @@ restService.post("", function(req, res) {
   else if(req.body.result && req.body.result.parameters && req.body.result.parameters.prueba)
   {
     //speech = req.body.result.parameters.prueba
-    speech = "listo pues"
+    speech = "Hola " + req.body.result.parameters.prueba
   }
   return res.json({
     speech: speech,
