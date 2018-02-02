@@ -18,15 +18,7 @@ password : 'WzRZuIFc2a',
 database : "sql10219053"
 
 });
-connection.connect(function(error){
-if(error){
-throw error;
-temp="error en la conexion base de datos"
-}else{
-temp="conexion correcta"
-//console.log('Conexion correcta.');
-}
-});
+
 
 restService.use(
   bodyParser.urlencoded({
@@ -44,8 +36,18 @@ restService.post("", function(req, res) {
   }
   else if(req.body.result && req.body.result.parameters && req.body.result.parameters.prueba)
   {
-    speech = "Hola " + req.body.result.parameters.prueba
+    //speech = "Hola " + req.body.result.parameters.prueba
   }
+    connection.connect(function(error){
+if(error){
+throw error;
+speech="error en la conexion base de datos"
+}else{
+speech="conexion correcta"
+//console.log('Conexion correcta.');
+}
+});
+  
   //else if(req.body.result && req.body.result.parameters && req.body.result.parameters.numero)
   //{
       var sp = req.body.result.parameters.numero
