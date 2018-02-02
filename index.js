@@ -5,6 +5,29 @@ const bodyParser = require("body-parser");
 
 const restService = express();
 
+
+const mysql = require("mysql");
+
+var temp = "";
+var resultado;
+
+var connection = mysql.createConnection({
+host : 'sql10.freemysqlhosting.net',
+user : 'sql10219053',
+password : 'WzRZuIFc2a',
+database : "sql10219053"
+
+});
+connection.connect(function(error){
+if(error){
+throw error;
+temp="error en la conexion base de datos"
+}else{
+temp="conexion correcta"
+//console.log('Conexion correcta.');
+}
+});
+
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -25,7 +48,25 @@ restService.post("", function(req, res) {
   }
   else if(req.body.result && req.body.result.parameters && req.body.result.parameters.numero)
   {
-    speech = "El numero es " + req.body.result.parameters.numero
+      var sp = req.body.result.parameters.numero
+      var query = connection.query('SELECT * FROM prueba WHERE cedula = ?', sp, function(error, result){
+      if(error)
+      {
+        throw error;
+      }
+      else
+      {
+      resultado = result;
+      if(resultado.length > 0){
+      speech = resultado[0].nombre;
+      //console.log(mensaje);
+      }
+      else
+      {
+      speech = 'Registro no encontrado';
+      }
+      }
+      });
   }
   return res.json({
     speech: speech,
