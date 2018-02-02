@@ -27,6 +27,7 @@ restService.post("", function(req, res) {
   {
     speech = "El numero es " + req.body.result.parameters.numero
   }
+  speech = "El numero es " + req.body.result.parameters.numero
   return res.json({
     speech: speech,
     displayText: speech,
