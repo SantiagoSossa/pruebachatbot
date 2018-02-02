@@ -69,7 +69,7 @@ restService.post("", function(req, res) {
       });
  // }
   return res.json({
-    speech: speech,
+    speech: req.body.result.parameters.numero,
     displayText: speech,
     source: "webhook-echo-sample"
   });
