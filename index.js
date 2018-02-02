@@ -50,7 +50,7 @@ speech="conexion correcta"
   
   //else if(req.body.result && req.body.result.parameters && req.body.result.parameters.numero)
   //{
-      var sp = req.body.result.parameters.numero
+     /* var sp = req.body.result.parameters.numero
       var query = connection.query('SELECT * FROM prueba WHERE cedula = ?', sp, function(error, result){
       if(error)
       {
@@ -68,10 +68,10 @@ speech="conexion correcta"
       speech = 'Registro no encontrado';
       }
       }
-      });
+      });*/
  // }
   return res.json({
-    speech: req.body.result.parameters.numero,
+    speech: speech,
     displayText: speech,
     source: "webhook-echo-sample"
   });
