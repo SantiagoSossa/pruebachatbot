@@ -38,7 +38,9 @@ restService.post("", function(req, res) {
   {
     //speech = "Hola " + req.body.result.parameters.prueba
   }
+  
     connection.connect(function(error){
+      speech = "uno";
 if(error){
 throw error;
 speech="error en la conexion base de datos"
