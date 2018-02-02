@@ -23,11 +23,10 @@ restService.post("", function(req, res) {
   {
     speech = "Hola " + req.body.result.parameters.prueba
   }
-  else if(req.body.result && req.body.result.parameters && req.body.result.parameters.numero)
+  else if(req.body.result.parameters.numero)
   {
     speech = "El numero es " + req.body.result.parameters.numero
   }
-  speech = "El numero es " + req.body.result.parameters.numero
   return res.json({
     speech: speech,
     displayText: speech,
