@@ -22,7 +22,7 @@ restService.post("", function(req, res) {
   }
   else if(req.body.result && req.body.result.parameters && req.body.result.parameters.prueba)
   {
-    //speech = "Hola " + req.body.result.parameters.prueba
+    speech = "Hola " + req.body.result.parameters.prueba
   }
   else if(req.body.result && req.body.result.parameters && req.body.result.parameters.numero)
   {
