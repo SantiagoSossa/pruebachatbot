@@ -6,20 +6,6 @@ const bodyParser = require("body-parser");
 const restService = express();
 
 
-const mysql = require("mysql");
-
-var temp = "";
-var resultado;
-
-var connection = mysql.createConnection({
-host : 'sql10.freemysqlhosting.net',
-user : 'sql10219053',
-password : 'WzRZuIFc2a',
-database : "sql10219053"
-
-});
-
-
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -38,40 +24,10 @@ restService.post("", function(req, res) {
   {
     //speech = "Hola " + req.body.result.parameters.prueba
   }
-  
-    connection.connect(function(error){
-      speech = "uno";
-if(error){
-throw error;
-speech="error en la conexion base de datos"
-}else{
-speech="conexion correcta"
-//console.log('Conexion correcta.');
-}
-});
-  
-  //else if(req.body.result && req.body.result.parameters && req.body.result.parameters.numero)
-  //{
-     /* var sp = req.body.result.parameters.numero
-      var query = connection.query('SELECT * FROM prueba WHERE cedula = ?', sp, function(error, result){
-      if(error)
-      {
-        throw error;
-      }
-      else
-      {
-      resultado = result;
-      if(resultado.length > 0){
-      speech = resultado[0].nombre;
-      //console.log(mensaje);
-      }
-      else
-      {
-      speech = 'Registro no encontrado';
-      }
-      }
-      });*/
- // }
+  else if(req.body.result && req.body.result.parameters && req.body.result.parameters.numero)
+  {
+      var sp = req.body.result.parameters.numero
+  }
   return res.json({
     speech: speech,
     displayText: speech,
